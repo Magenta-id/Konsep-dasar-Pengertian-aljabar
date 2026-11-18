@@ -39,7 +39,7 @@ window.initAljabarQuiz = function(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Database Soal Diperkaya: Banyak Variasi & Tidak Berulang
+  // Database Soal Diperluas: Banyak Variasi untuk Tiap Kategori
   const questionDatabase = {
     mudah: {
       polos: [
@@ -66,6 +66,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["-8", "p", "9", "-9"],
           answer: 2,
           explanation: "Konstanta adalah suku yang tidak memuat variabel dan nilainya tetap, yaitu \\(9\\)."
+        },
+        {
+          question: "Dalam bentuk aljabar \\(4x^2 - 5x + 6\\), suku yang memiliki pangkat tertinggi adalah...",
+          options: ["4x^2", "-5x", "6", "x^2"],
+          answer: 0,
+          explanation: "Suku dengan pangkat tertinggi pada bentuk aljabar tersebut adalah \\(4x^2\\) (berderajat dua)."
+        },
+        {
+          question: "Manakah di bawah ini yang merupakan bentuk aljabar linear (satu variabel)?",
+          options: ["\\(x^2 + 2x = 0\\)", "\\(3x - 5 = 7\\)", "\\(xy + 2 = 0\\)", "\\(\\frac{1}{x} + 2 = 5\\)"],
+          answer: 1,
+          explanation: "Bentuk aljabar linear adalah bentuk aljabar dengan pangkat tertinggi variabelnya adalah \\(1\\), yaitu \\(3x - 5 = 7\\)."
         }
       ],
       cerita: [
@@ -92,6 +104,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["m - 3", "3m", "\\(\\frac{m}{3}\\)", "m + 3"],
           answer: 2,
           explanation: "Pita yang dibagi rata menjadi beberapa bagian dinyatakan dalam bentuk pecahan pembagian, yaitu \\(\\frac{m}{3}\\)."
+        },
+        {
+          question: "Pak Joko membagikan \\(x\\) buah permen kepada \\(5\\) orang anaknya sama rata. Jumlah permen yang diterima oleh setiap anak adalah...",
+          options: ["5x", "\\(\\frac{x}{5}\\)", "x - 5", "x + 5"],
+          answer: 1,
+          explanation: "Permen sebanyak \\(x\\) dibagi rata kepada 5 anak ditulis dalam bentuk pecahan \\(\\frac{x}{5}\\)."
+        },
+        {
+          question: "Suhu udara di suatu tempat adalah \\(t\\) derajat Celsius. Jika suhu tersebut naik sebesar \\(4\\) derajat Celsius, suhu udara sekarang menjadi...",
+          options: ["4t", "t - 4", "t + 4", "4 - t"],
+          answer: 2,
+          explanation: "Kata 'naik' menunjukkan penambahan nilai, sehingga ditulis sebagai \\(t + 4\\)."
         }
       ]
     },
@@ -120,6 +144,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["2x + 4", "2x + 8", "x + 8", "2x - 8"],
           answer: 1,
           explanation: "Gunakan sifat distributif: \\(2 \\times x + 2 \\times 4 = 2x + 8\\)."
+        },
+        {
+          question: "Hasil dari perkalian bentuk aljabar \\(-3(2x - 5\\)) adalah...",
+          options: ["-6x + 15", "-6x - 15", "6x - 15", "-6x + 5"],
+          answer: 0,
+          explanation: "Kalikan ke dalam: \\(-3 \\times 2x = -6x\\) dan \\(-3 \\times (-5) = +15\\), sehingga hasilnya \\(-6x + 15\\)."
+        },
+        {
+          question: "Bentuk sederhana dari \\(4a + 3b - 2a + 5b\\) adalah...",
+          options: ["2a + 8b", "6a + 8b", "2a - 2b", "6a - 2b"],
+          answer: 0,
+          explanation: "Kelompokkan suku sejenis: \\((4a - 2a) + (3b + 5b) = 2a + 8b\\)."
         }
       ],
       cerita: [
@@ -146,6 +182,12 @@ window.initAljabarQuiz = function(containerId) {
           options: ["2a + 4", "2a - 4", "a - 4", "4 - 2a"],
           answer: 1,
           explanation: "Dua kali lipat apel adalah \\(2a\\), lalu dikurangi 4 menjadi \\(2a - 4\\)."
+        },
+        {
+          question: "Uang saku Syaiful selama \\(n\\) hari adalah Rp15.000 per hari, ditambah bonus sebesar Rp10.000 dari kakeknya. Bentuk aljabar total uang yang diterima Syaiful adalah...",
+          options: ["10000n + 15000", "15000n + 10000", "25000n", "15000 + n"],
+          answer: 1,
+          explanation: "Uang per hari dikali jumlah hari \\(15000n\\) ditambah bonus tetap Rp10.000, menjadi \\(15000n + 10000\\)."
         }
       ]
     },
@@ -174,6 +216,12 @@ window.initAljabarQuiz = function(containerId) {
           options: ["6", "18", "24", "0"],
           answer: 2,
           explanation: "Substitusi: \\(3(-2)^2 - 2(-2)(3) = 3(4) - (-12) = 12 + 12 = 24\\)."
+        },
+        {
+          question: "Hasil pemfaktoran dari bentuk aljabar \\(x^2 - 9\\) adalah...",
+          options: ["\\((x - 3)(x - 3)\\)", "\\((x + 3)(x + 3)\\)", "\\((x - 3)(x + 3)\\)", "\\((x - 9)(x + 1)\\)"],
+          answer: 2,
+          explanation: "Bentuk selisih dua kuadrat \\(a^2 - b^2 = (a - b)(a + b)\\), sehingga \\(x^2 - 3^2 = (x - 3)(x + 3)\\)."
         }
       ],
       cerita: [
@@ -209,7 +257,36 @@ window.initAljabarQuiz = function(containerId) {
   let currentType = 'polos';
   let currentQuestion = null;
   let answered = false;
-  let lastQuestionIndex = -1; // Variabel pelacak untuk mencegah soal berulang langsung
+  
+  // Sistem Memori Riwayat Soal (Melacak indeks soal yang sudah pernah tampil per kategori)
+  let historyTracker = {};
+
+  function getUniqueRandomIndex(poolLength, categoryKey) {
+    if (!historyTracker[categoryKey]) {
+      historyTracker[categoryKey] = [];
+    }
+
+    // Jika semua soal dalam kategori ini sudah pernah tampil, reset riwayatnya
+    if (historyTracker[categoryKey].length >= poolLength) {
+      historyTracker[categoryKey] = [];
+    }
+
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * poolLength);
+    } while (historyTracker[categoryKey].includes(randomIndex));
+
+    // Masukkan ke daftar riwayat yang sudah tampil
+    historyTracker[categoryKey].push(randomIndex);
+    return randomIndex;
+  }
+
+  function getRandomQuestion() {
+    const pool = questionDatabase[currentLevel][currentType];
+    const categoryKey = `${currentLevel}_${currentType}`;
+    const randomIndex = getUniqueRandomIndex(pool.length, categoryKey);
+    return pool[randomIndex];
+  }
 
   // Render Struktur Kuis ke dalam Satu Kontainer Utuh
   container.innerHTML = `
@@ -236,23 +313,6 @@ window.initAljabarQuiz = function(containerId) {
   `;
 
   const bodyEl = container.querySelector('#quiz-body');
-
-  function getRandomQuestion() {
-    const pool = questionDatabase[currentLevel][currentType];
-    let randomIndex;
-    
-    // Pastikan soal berikutnya tidak sama dengan soal yang baru saja tampil (jika jumlah soal > 1)
-    if (pool.length > 1) {
-      do {
-        randomIndex = Math.floor(Math.random() * pool.length);
-      } while (randomIndex === lastQuestionIndex);
-    } else {
-      randomIndex = 0;
-    }
-    
-    lastQuestionIndex = randomIndex;
-    return pool[randomIndex];
-  }
 
   function loadNewQuestion() {
     answered = false;
@@ -325,7 +385,6 @@ window.initAljabarQuiz = function(containerId) {
       container.querySelectorAll('#level-selectors .ctrl-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       currentLevel = e.target.getAttribute('data-level');
-      lastQuestionIndex = -1; // Reset pelacak saat ganti level
       loadNewQuestion();
     });
   });
@@ -336,7 +395,6 @@ window.initAljabarQuiz = function(containerId) {
       container.querySelectorAll('#type-selectors .ctrl-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       currentType = e.target.getAttribute('data-type');
-      lastQuestionIndex = -1; // Reset pelacak saat ganti tipe
       loadNewQuestion();
     });
   });
