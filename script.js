@@ -34,11 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* Sintaks kuis */
 window.initAljabarQuiz = function(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Database Soal Lengkap: 3 Level & 2 Tipe (Polos & Cerita)
+  // Database Soal Diperkaya: Banyak Variasi & Tidak Berulang
   const questionDatabase = {
     mudah: {
       polos: [
@@ -53,6 +54,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["Variabel", "Konstanta", "Koefisien", "Suku"],
           answer: 2,
           explanation: "Angka \\(7\\) terletak di depan variabel \\(a\\) dan berfungsi mengalikannya, sehingga disebut koefisien."
+        },
+        {
+          question: "Berapakah banyak suku pada bentuk aljabar \\(2x + 3y - 5\\)?",
+          options: ["1", "2", "3", "4"],
+          answer: 2,
+          explanation: "Suku adalah bagian dari bentuk aljabar yang dipisahkan oleh tanda penjumlahan atau pengurangan, yaitu \\(2x\\), \\(3y\\), dan \\(-5\\) (total ada 3 suku)."
+        },
+        {
+          question: "Pada bentuk aljabar \\(-8p + 9\\), manakah yang merupakan konstanta?",
+          options: ["-8", "p", "9", "-9"],
+          answer: 2,
+          explanation: "Konstanta adalah suku yang tidak memuat variabel dan nilainya tetap, yaitu \\(9\\)."
         }
       ],
       cerita: [
@@ -67,6 +80,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["5y", "y - 5", "y + 5", "5 - y"],
           answer: 2,
           explanation: "Kata 'diberi lagi' berarti bertambah, sehingga penjumlahannya ditulis sebagai \\(y + 5\\)."
+        },
+        {
+          question: "Ibu membeli \\(p\\) kg jeruk. Ternyata \\(2\\) kg dari jeruk tersebut busuk dan dibuang. Sisa jeruk ibu yang masih baik adalah...",
+          options: ["2p", "p - 2", "p + 2", "2 - p"],
+          answer: 1,
+          explanation: "Kata 'dibuang' atau 'dikurangi' menyatakan operasi pengurangan, sehingga ditulis \\(p - 2\\)."
+        },
+        {
+          question: "Sebuah pita memiliki panjang \\(m\\) meter. Pita tersebut dipotong menjadi \\(3\\) bagian sama panjang. Panjang setiap bagian pita adalah...",
+          options: ["m - 3", "3m", "\\(\\frac{m}{3}\\)", "m + 3"],
+          answer: 2,
+          explanation: "Pita yang dibagi rata menjadi beberapa bagian dinyatakan dalam bentuk pecahan pembagian, yaitu \\(\\frac{m}{3}\\)."
         }
       ]
     },
@@ -83,6 +108,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["6", "12", "-12", "m"],
           answer: 2,
           explanation: "Konstanta adalah suku yang tidak memuat variabel dan berdiri sendiri, yaitu \\(-12\\)."
+        },
+        {
+          question: "Sederhanakan bentuk aljabar berikut: \\(3x + 5x - 2x\\).",
+          options: ["6x", "8x", "10x", "5x"],
+          answer: 0,
+          explanation: "Jumlahkan koefisien suku-suku sejenis: \\(3 + 5 - 2 = 6\\), sehingga hasilnya \\(6x\\)."
+        },
+        {
+          question: "Hasil penjabaran dari bentuk aljabar \\(2(x + 4)\\) adalah...",
+          options: ["2x + 4", "2x + 8", "x + 8", "2x - 8"],
+          answer: 1,
+          explanation: "Gunakan sifat distributif: \\(2 \\times x + 2 \\times 4 = 2x + 8\\)."
         }
       ],
       cerita: [
@@ -97,6 +134,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["2x + 3y", "3x + 2y", "5xy", "x + y + 5"],
           answer: 0,
           explanation: "Dua buku ditulis \\(2x\\) dan tiga pensil ditulis \\(3y\\), totalnya dijumlahkan menjadi \\(2x + 3y\\)."
+        },
+        {
+          question: "Pak Andi memiliki sebidang tanah berbentuk persegi panjang. Panjangnya \\(3\\) meter lebihnya dari lebarnya \\(l\\). Bentuk aljabar untuk panjang tanah tersebut adalah...",
+          options: ["3l", "l - 3", "l + 3", "3 - l"],
+          answer: 2,
+          explanation: "Frasa '3 meter lebihnya dari lebar \\(l\\)' berarti lebar ditambah 3, yaitu \\(l + 3\\)."
+        },
+        {
+          question: "Dalam sebuah keranjang terdapat \\(a\\) buah apel dan jumlah mangga dua kali lipat dari jumlah apel dikurangi 4. Bentuk aljabar buah mangga adalah...",
+          options: ["2a + 4", "2a - 4", "a - 4", "4 - 2a"],
+          answer: 1,
+          explanation: "Dua kali lipat apel adalah \\(2a\\), lalu dikurangi 4 menjadi \\(2a - 4\\)."
         }
       ]
     },
@@ -113,6 +162,18 @@ window.initAljabarQuiz = function(containerId) {
           options: ["12", "15", "19", "21"],
           answer: 2,
           explanation: "Substitusikan \\(x = 3\\) ke dalam \\(4(3) + 7 = 12 + 7 = 19\\)."
+        },
+        {
+          question: "Bentuk sederhana dari \\(5x - 2y - 3x + 4y\\) adalah...",
+          options: ["2x + 2y", "8x + 2y", "2x - 6y", "8x - 6y"],
+          answer: 0,
+          explanation: "Gabungkan suku sejenis: \\((5x - 3x) + (-2y + 4y) = 2x + 2y\\)."
+        },
+        {
+          question: "Jika \\(a = -2\\) dan \\(b = 3\\), hitunglah nilai dari \\(3a^2 - 2ab\\).",
+          options: ["6", "18", "24", "0"],
+          answer: 2,
+          explanation: "Substitusi: \\(3(-2)^2 - 2(-2)(3) = 3(4) - (-12) = 12 + 12 = 24\\)."
         }
       ],
       cerita: [
@@ -123,10 +184,22 @@ window.initAljabarQuiz = function(containerId) {
           explanation: "Masukkan nilai \\(s = 6\\) ke dalam rumus \\(4s\\), yaitu \\(4 \\times 6 = 24\\) cm."
         },
         {
-          question: "Uang tabungan Siska adalah \\(m\\) rupiah. la mengambil uangnya sebesar Rp10.000, lalu sisanya dibagi rata ke dalam \\(2\\) amplop. Bentuk aljabar untuk isi satu amplop adalah...",
+          question: "Uang tabungan Siska adalah \\(m\\) rupiah. Ia mengambil uangnya sebesar Rp10.000, lalu sisanya dibagi rata ke dalam \\(2\\) amplop. Bentuk aljabar untuk isi satu amplop adalah...",
           options: ["\\(\\frac{m - 10000}{2}\\)", "\\(\\frac{m}{2} - 10000\\)", "\\(2m - 10000\\)", "\\(\\frac{m}{2} + 5000\\)"],
           answer: 0,
           explanation: "Tabungan dikurangi Rp10.000 menjadi \\((m - 10000)\\), lalu dibagi dua menjadi \\(\\frac{m - 10000}{2}\\)."
+        },
+        {
+          question: "Sebuah kebun berbentuk persegi panjang memiliki panjang \\((2x + 3)\\) meter dan lebar \\(x\\) meter. Bentuk aljabar keliling kebun tersebut adalah...",
+          options: ["3x + 3", "6x + 6", "4x + 3", "2x + 3"],
+          answer: 1,
+          explanation: "Rumus keliling \\( = 2(p + l) = 2((2x + 3) + x) = 2(3x + 3) = 6x + 6\\)."
+        },
+        {
+          question: "Umur seorang ayah \\(3\\) kali umur anaknya. Jika selisih umur mereka adalah \\(24\\) tahun, dan umur anak dimisalkan \\(x\\), persamaan aljabar yang tepat untuk menyatakan selisih umur mereka adalah...",
+          options: ["3x = 24", "3x - x = 24", "x + 3x = 24", "3(x - 24) = x"],
+          answer: 1,
+          explanation: "Umur ayah adalah \\(3x\\) dan umur anak adalah \\(x\\). Selisihnya adalah \\(3x - x = 24\\)."
         }
       ]
     }
@@ -136,6 +209,7 @@ window.initAljabarQuiz = function(containerId) {
   let currentType = 'polos';
   let currentQuestion = null;
   let answered = false;
+  let lastQuestionIndex = -1; // Variabel pelacak untuk mencegah soal berulang langsung
 
   // Render Struktur Kuis ke dalam Satu Kontainer Utuh
   container.innerHTML = `
@@ -165,8 +239,18 @@ window.initAljabarQuiz = function(containerId) {
 
   function getRandomQuestion() {
     const pool = questionDatabase[currentLevel][currentType];
-    // Ambil soal secara acak dari kategori yang dipilih
-    const randomIndex = Math.floor(Math.random() * pool.length);
+    let randomIndex;
+    
+    // Pastikan soal berikutnya tidak sama dengan soal yang baru saja tampil (jika jumlah soal > 1)
+    if (pool.length > 1) {
+      do {
+        randomIndex = Math.floor(Math.random() * pool.length);
+      } while (randomIndex === lastQuestionIndex);
+    } else {
+      randomIndex = 0;
+    }
+    
+    lastQuestionIndex = randomIndex;
     return pool[randomIndex];
   }
 
@@ -241,6 +325,7 @@ window.initAljabarQuiz = function(containerId) {
       container.querySelectorAll('#level-selectors .ctrl-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       currentLevel = e.target.getAttribute('data-level');
+      lastQuestionIndex = -1; // Reset pelacak saat ganti level
       loadNewQuestion();
     });
   });
@@ -251,6 +336,7 @@ window.initAljabarQuiz = function(containerId) {
       container.querySelectorAll('#type-selectors .ctrl-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       currentType = e.target.getAttribute('data-type');
+      lastQuestionIndex = -1; // Reset pelacak saat ganti tipe
       loadNewQuestion();
     });
   });
