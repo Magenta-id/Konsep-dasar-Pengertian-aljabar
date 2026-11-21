@@ -475,6 +475,10 @@ tbody tr:last-child td {
   box-shadow: 0 10px 24px rgba(57, 141, 131, .15);
 }
 
+.rumus mjx-container, .rumus mjx-math, .rumus mjx-mrow{
+  color: #398D83;
+}
+
 /* =========================================
    3. RUMUSKEDUA - VIOLET / LAVENDER / BLUE
 ========================================= */
