@@ -167,7 +167,6 @@
 }
 
 
-
 /* yang bawah tidak boleh dihapus */
 /* Untuk math agar tidak offside */
 
@@ -195,9 +194,34 @@ mjx-container[display] svg {
     height: auto !important;
 }
 
-/* Mengubah warna teks dasar MathJax menjadi hitam */
+/* 4. Mengubah warna teks dasar MathJax menjadi hitam */
 mjx-container, mjx-math, mjx-mrow {
     color: #334155;
+}
+
+/* 5. Gambar */
+/* Menargetkan semua gambar langsung di CodePen */
+img {
+  border-radius: 6px;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 650px; /* Batasi lebar maksimal sesuai keinginan */
+  width: 100%;
+}
+.post-body img, 
+.separator img {
+  max-width: 650px !important; /* Batasi lebar maksimal agar tidak raksasa */
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+/* 6. Bullet li bold*/
+.bullet-bold li::marker {
+  font-weight: bold;
 }
 
 /* Batas */
@@ -358,6 +382,10 @@ tbody tr:last-child td {
   line-height: 1.8;
 }
 
+.trivia mjx-container, .trivia mjx-math, .trivia mjx-mrow {
+  color: #8B785D;
+}
+
 .trivia-footer {
   margin-top: 17px;
   padding-top: 12px;
@@ -511,6 +539,10 @@ tbody tr:last-child td {
   line-height: 1.8;
 }
 
+.rumuskedua-content mjx-container, .rumuskedua-content Mjx-math, .rumuskedua-content Mjx-mrow {
+  color: #77758F;
+}
+
 .rumuskedua:hover {
   transform: translateX(4px);
   box-shadow: 0 8px 22px rgba(149, 117, 205, .15);
@@ -577,6 +609,10 @@ tbody tr:last-child td {
   color: #927473;
   font-size: 14px;
   line-height: 1.8;
+}
+
+.warning mjx-container, .warning mjx-math, .warning mjx-mrow {
+  color: #927473;
 }
 
 .warning-tip {
@@ -659,6 +695,10 @@ tbody tr:last-child td {
   line-height: 1.8;
 }
 
+.catatan-content mjx-container, .catatan-content mjx-math, .catatan-content mjx-mrow {
+  color: #71879B;
+}
+
 .catatan-footer {
   padding: 11px 21px 15px;
   border-radius: 0 0 10px 10px;
@@ -730,6 +770,10 @@ tbody tr:last-child td {
   color: #8F7967;
   font-size: 13px;
   line-height: 1.7;
+}
+
+.info-content mjx-container, .info-content mjx-math, .info-content mjx-mrow {
+  color: #8F7967;
 }
 
 .info-arrow {
@@ -1191,4 +1235,4 @@ h3.daftar-isi {
     flex-basis: 7px;
     width: 7px;
   }
-}
+  }
